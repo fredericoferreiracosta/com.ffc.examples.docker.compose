@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+    customer-service:
+        build: ./customer-service
+        ports:
+           - 3001:3001
+    product-service:
+        build: ./product-service
+        ports:
+           - 3002:3002
+    ui:
+        build: ./ui
+        depends_on:
+           - customer-service
+           - product-service
+        ports:
+           - 80:80
